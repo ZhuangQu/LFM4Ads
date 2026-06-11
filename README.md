@@ -18,11 +18,10 @@ Pretrain LFM4Ads and aggregate CRs:
 ```bash
 python upstream.py cuda:0 trial=1
 ```
+LFM4Ads and CRs will be saved to `trial=1.pt`.
 
 Train downstream models:
 ```bash
 python downstream.py cuda:0 trial=1
 ```
-
-LFM4Ads and CRs will be saved to `trial=1.pt`.
 Downstream AUCs will be saved to `trial=1.csv`.
