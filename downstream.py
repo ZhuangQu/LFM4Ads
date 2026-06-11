@@ -5,12 +5,12 @@ import torch
 from model import FeatureUsage, ModelUsage, ModuleUsage
 from train import train
 
+LFM4Ads = torch.load(argv[2] + ".pt", argv[1], weights_only=False)
 file = open(argv[2] + ".csv", "w", 1)
 file.write("Scenario,      Method,    AUC\n")
 
 
 def run(Usage, method):
-    LFM4Ads = torch.load(argv[2] + ".pt", argv[1], weights_only=False)
     model = Usage(LFM4Ads, method).to(argv[1])
     auc = train(model, scenario)
     file.write(f"{scenario:8}, {method:>11}, {auc:.4f}\n")
