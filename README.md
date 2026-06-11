@@ -24,4 +24,5 @@ Train downstream models:
 python downstream.py cuda:0 trial=1
 ```
 
-LFM4Ads and CRs are in `trial=1.pt`. Downstream AUCs are in `trial=1.csv`.
+LFM4Ads and CRs will be saved to `trial=1.pt`.
+Downstream AUCs will be saved to `trial=1.csv`.
