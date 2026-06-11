@@ -91,4 +91,4 @@ class ModelUsage(nn.Module):
             UR = E[:, :270]
         UR = self.linear(UR)
         IR = E[:, -90:]
-        return (UR * IR).sum(-1)
+        batch["logit"] = (UR * IR).sum(-1)
