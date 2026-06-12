@@ -10,6 +10,15 @@ from train import infer, train
 _, device, path = argv
 
 
+def run(Usage, method):
+    model = Usage(LFM4Ads, method).to(device)
+    auc = train(model, scenario)
+    file = open(path, "a", 1)
+    if file.tell() == 0:
+        file.write("Scenario,      Method,    AUC\n")
+    file.write(f"{scenario:8}, {method:>11}, {auc:.4f}\n")
+
+
 print("pretrain LFM4Ads ...")
 LFM4Ads = DCNv2().to(device)
 train(LFM4Ads, "all")
@@ -22,15 +31,6 @@ train_valid_set = pd.concat(Split("all")[:2])
 for _ in infer(LFM4Ads, train_valid_set):
     pass
 LFM4Ads.CRs = torch.nn.functional.layer_norm(LFM4Ads.CRs, [360])
-
-
-def run(Usage, method):
-    model = Usage(LFM4Ads, method).to(device)
-    auc = train(model, scenario)
-    file = open(path, "a", 1)
-    if file.tell() == 0:
-        file.write("Scenario,      Method,    AUC\n")
-    file.write(f"{scenario:8}, {method:>11}, {auc:.4f}\n")
 
 
 print("train downstream models ...")
