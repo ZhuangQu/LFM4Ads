@@ -28,8 +28,8 @@ class DCNv2(nn.Module):
 
     def forward(self, batch):
         CRs = [self.embed(batch)]
-        for index, layer in enumerate(self.layers):
-            if index < 3:
+        for i, layer in enumerate(self.layers):
+            if i < 3:
                 CRs += [layer(CRs[-1]) * CRs[0] + CRs[-1]]
             else:
                 CRs += [layer(CRs[-1].relu())]
@@ -68,8 +68,8 @@ class ModuleUsage(DCNv2):
         super().__init__()
         if method != "Vanilla":
             self.sparse.load_state_dict(LFM4Ads.sparse.state_dict())
-            for index in range(int(method[-1])):
-                self.layers[index].load_state_dict(LFM4Ads.layers[index].state_dict())
+            for i in range(int(method[-1])):
+                self.layers[i].load_state_dict(LFM4Ads.layers[i].state_dict())
 
 
 class ModelUsage(nn.Module):
