@@ -4,8 +4,8 @@ import fields
 
 
 class Dataset(pd.DataFrame):
-    def __getitem__(self, index):
-        return self.iloc[index].to_dict()
+    def __getitem__(self, i):
+        return self.iloc[i].to_dict()
 
 
 def Split(scenario):
