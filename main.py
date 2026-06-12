@@ -7,26 +7,24 @@ from dataset import Split
 from model import DCNv2, FeatureUsage, ModelUsage, ModuleUsage
 from train import infer, train
 
-_, device, path = argv
-
 
 def run(Usage, method):
-    model = Usage(LFM4Ads, method).to(device)
+    model = Usage(LFM4Ads, method).to(argv[1])
     auc = train(model, scenario)
-    file = open(path, "a", 1)
+    file = open("result.csv", "a", 1)
     if file.tell() == 0:
         file.write("Scenario,      Method,    AUC\n")
     file.write(f"{scenario:8}, {method:>11}, {auc:.4f}\n")
 
 
 print("pretrain LFM4Ads ...")
-LFM4Ads = DCNv2().to(device)
+LFM4Ads = DCNv2().to(argv[1])
 train(LFM4Ads, "all")
 LFM4Ads.requires_grad_(False)
 
 
 print("aggregate CRs ...")
-LFM4Ads.CRs = torch.zeros(1000, 6, 360).to(device)
+LFM4Ads.CRs = torch.zeros(1000, 6, 360).to(argv[1])
 train_valid_set = pd.concat(Split("all")[:2])
 for _ in infer(LFM4Ads, train_valid_set):
     pass
