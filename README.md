@@ -18,7 +18,7 @@ Run a trial:
 ```bash
 python main.py cuda:0
 ```
-Change `cuda:0` to `cpu` if no GPU.
+Modify `cuda:0` to use another device.
 Downstream AUC will be appended to `result.csv`.
 The AUC in our paper is averaged over 100 trials.
 
