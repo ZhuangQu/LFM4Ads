@@ -19,5 +19,5 @@ Run a trial:
 python main.py cuda:0
 ```
 Change `cuda:0` to `cpu` if no GPU.
-The downstream AUCs will be saved in `result.csv`.
-The AUCs in paper are averaged over 100 trials.
+Downstream AUCs will be saved in `result.csv`.
+AUCs in paper are averaged over 100 trials.
