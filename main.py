@@ -11,7 +11,7 @@ from train import infer, train
 def run(Usage, method):
     model = Usage(LFM4Ads, method).to(argv[1])
     auc = train(model, scenario)
-    file = open("result.csv", "a", 1)
+    file = open("result.csv", "a")
     if file.tell() == 0:
         file.write("Scenario,      Method,    AUC\n")
     file.write(f"{scenario:8}, {method:>11}, {auc:.4f}\n")
@@ -55,7 +55,6 @@ for scenario in [1, 0, 4, 2, 6, 3, 8, 5]:
     run(ModuleUsage, "CR'_3")  # Cross_3
     run(ModuleUsage, "CR'_4")  # DNN_1
     run(ModuleUsage, "CR'_5")  # DNN_2
-    run(ModuleUsage, "CR'_6")  # DNN_3
 
     run(ModelUsage, "Retriever")
     run(ModelUsage, "IR & UR")
