@@ -14,16 +14,10 @@ tar -xzvf KuaiRand-1K.tar.gz
 python dataset.py
 ```
 
-Pretrain LFM4Ads and aggregate CRs:
+Run a trial:
 ```bash
-python upstream.py cuda:0 trial=1
+python main.py cuda:0 result.csv
 ```
-
-Train downstream models:
-```bash
-python downstream.py cuda:0 trial=1
-```
-
-LFM4Ads and CRs will be saved as `trial=1.pt`.
-Downstream AUCs will be saved as `trial=1.csv`.
+Change `cuda:0` to `cpu` if no GPU.
+The downstream AUCs will be saved in `result.csv`.
 The AUCs in paper are averaged over 100 trials.
