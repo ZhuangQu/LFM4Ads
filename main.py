@@ -33,6 +33,7 @@ LFM4Ads.CRs = torch.nn.functional.layer_norm(LFM4Ads.CRs, [360])
 
 print("train downstream models ...")
 for scenario in [1, 0, 4, 2, 6, 3, 8, 5]:
+
     run(FeatureUsage, "SUM")
     run(FeatureUsage, "concat CR_0")  # Towers
     run(FeatureUsage, "concat CR_1")  # Cross_1
