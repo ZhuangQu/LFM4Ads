@@ -55,6 +55,7 @@ for scenario in [1, 0, 4, 2, 6, 3, 8, 5]:
     run(ModuleUsage, "CR'_3")  # Cross_3
     run(ModuleUsage, "CR'_4")  # DNN_1
     run(ModuleUsage, "CR'_5")  # DNN_2
+    run(ModuleUsage, "CR'_6")  # DNN_3
 
     run(ModelUsage, "Retriever")
     run(ModelUsage, "IR & UR")
