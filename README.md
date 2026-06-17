@@ -19,8 +19,8 @@ Run a trial:
 python main.py cuda:0
 ```
 Modify `cuda:0` to use another device.
-Downstream AUC will be appended to `result.csv`.
 Run multiple times for multiple trials.
+Downstream AUC will be appended to `result.csv`.
 The AUC in our paper is averaged over 100 trials.
 
 Visualize the average AUC:
