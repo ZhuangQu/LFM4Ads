@@ -28,6 +28,6 @@ def plot(usage, *methods):
 
 
 for scenario in [1, 0, 4, 2, 6, 3, 8, 5]:
-    plot("Feature", "SUM", "concat CR", "gate CR")
+    plot("Feature", "SUM", "concat CR", "gating CR")
     plot("Module", "Vanilla", "CR'")
-    plot("Model", "Retriever", "IR & UR", "IR & CR")
+    plot("Model", "TwoTower", "IR & UR", "IR & CR")
