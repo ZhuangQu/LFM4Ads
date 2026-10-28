@@ -41,12 +41,12 @@ for scenario in [1, 0, 4, 2, 6, 3, 8, 5]:
     run(FeatureUsage, "concat CR_3")  # Cross_3
     run(FeatureUsage, "concat CR_4")  # DNN_1
     run(FeatureUsage, "concat CR_5")  # DNN_2
-    run(FeatureUsage, "gate CR_0")  # Towers
-    run(FeatureUsage, "gate CR_1")  # Cross_1
-    run(FeatureUsage, "gate CR_2")  # Cross_2
-    run(FeatureUsage, "gate CR_3")  # Cross_3
-    run(FeatureUsage, "gate CR_4")  # DNN_1
-    run(FeatureUsage, "gate CR_5")  # DNN_2
+    run(FeatureUsage, "gating CR_0")  # Towers
+    run(FeatureUsage, "gating CR_1")  # Cross_1
+    run(FeatureUsage, "gating CR_2")  # Cross_2
+    run(FeatureUsage, "gating CR_3")  # Cross_3
+    run(FeatureUsage, "gating CR_4")  # DNN_1
+    run(FeatureUsage, "gating CR_5")  # DNN_2
 
     run(ModuleUsage, "Vanilla")
     run(ModuleUsage, "CR'_0")  # Towers
@@ -57,7 +57,7 @@ for scenario in [1, 0, 4, 2, 6, 3, 8, 5]:
     run(ModuleUsage, "CR'_5")  # DNN_2
     run(ModuleUsage, "CR'_6")  # DNN_3
 
-    run(ModelUsage, "Retriever")
+    run(ModelUsage, "TwoTower")
     run(ModelUsage, "IR & UR")
     run(ModelUsage, "IR & CR_0")  # Towers
     run(ModelUsage, "IR & CR_1")  # Cross_1
