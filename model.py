@@ -42,12 +42,12 @@ class DCNv2(nn.Module):
 
 class FeatureUsage(DCNv2):
     def __init__(self, LFM4Ads, method):
-        super().__init__(360 if "gate" in method else 370)
+        super().__init__(360 if "gating" in method else 370)
         self.LFM4Ads = LFM4Ads
         self.method = method
         self.linear = nn.Linear(
             360 if "CR" in method else 270,
-            360 if "gate" in method else 10,
+            360 if "gating" in method else 10,
         )
 
     def embed(self, batch):
@@ -57,7 +57,7 @@ class FeatureUsage(DCNv2):
         else:
             UR = self.LFM4Ads.sparse(batch)[:, :270]
         UR = self.linear(UR)
-        if "gate" in self.method:
+        if "gating" in self.method:
             return E * UR.sigmoid()
         else:
             return torch.cat([E, UR], -1)
@@ -81,7 +81,7 @@ class ModelUsage(nn.Module):
         self.linear = nn.Linear(360 if "CR" in method else 270, 90)
 
     def forward(self, batch):
-        if self.method == "Retriever":
+        if self.method == "TwoTower":
             E = self.sparse(batch)
         else:
             E = self.LFM4Ads.sparse(batch)
