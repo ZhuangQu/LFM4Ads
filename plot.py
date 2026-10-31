@@ -11,16 +11,20 @@ def query(method):
 
 
 def plot(usage, *methods):
-    plt.figure(figsize=(4, 2))
+    xticks = ["$Towers$", "$Cross_1$", "$Cross_2$", "$Cross_3$", "$DNN_1$", "$DNN_2$"]
+    if usage == "Module":
+        xticks += ["$DNN_3$"]
+    n = len(xticks)
+    plt.figure(figsize=(5, 2))
     for method in methods:
         if "CR" in method:
-            plt.plot([query(f"{method}_{i}") for i in range(6)], marker="o")
-            plt.text(5.3, query(f"{method}_5"), method, va="center")
+            data = [query(f"{method}_{i}") for i in range(n)]
+            plt.plot(data, marker="o")
+            plt.text(n - 0.6, data[-1], method, va="center")
         else:
             plt.axhline(query(method), color="y")
-            plt.text(5.3, query(method), method, va="center")
-    xticks = ["$Towers$", "$Cross_1$", "$Cross_2$", "$Cross_3$", "$DNN_1$", "$DNN_2$"]
-    plt.xticks(range(6), xticks)
+            plt.text(n - 0.6, query(method), method, va="center")
+    plt.xticks(range(n), xticks)
     plt.ylabel("AUC")
     plt.title(f"{usage}-Level Usage for Scenario {scenario}")
     makedirs(usage, exist_ok=True)
